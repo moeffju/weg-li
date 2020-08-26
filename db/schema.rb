@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_172623) do
+ActiveRecord::Schema.define(version: 2020_08_26_200105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,29 @@ ActiveRecord::Schema.define(version: 2020_08_24_172623) do
     t.string "error_message"
     t.string "shared_album_url"
     t.index ["user_id"], name: "index_bulk_uploads_on_user_id"
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.string "tbnr"
+    t.string "description"
+    t.string "description_long"
+    t.string "bkat_short"
+    t.string "bkat_long"
+    t.string "points_type"
+    t.integer "points"
+    t.decimal "fine"
+    t.string "table_group"
+    t.string "table_long"
+    t.integer "table_short"
+    t.date "from"
+    t.date "to"
+    t.string "ban"
+    t.integer "asterisk"
+    t.integer "category"
+    t.string "overload_from"
+    t.string "overload_to"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "districts", force: :cascade do |t|
