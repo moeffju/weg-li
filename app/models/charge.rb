@@ -2,6 +2,7 @@ require 'csv'
 
 class Charge < ActiveRecord::Base
   validates :tbnr, :description, presence: true
+  validates :tbnr, length: {is: 6}
 
   scope :active, -> { where('charges.to > NOW()') }
 
@@ -30,5 +31,9 @@ class Charge < ActiveRecord::Base
       }
       create!(args)
     end
+  end
+
+  def tbnr_helper
+    @tbnr_helper ||= Tbnr.new(tbnr)
   end
 end

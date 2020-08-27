@@ -1,0 +1,25 @@
+h3 bundeseinheitliche Tatbestandsnummer #{@charge.tbnr}
+small= @charge.bkat_long
+small= @charge.tbnr_helper.description
+
+.well.well-sm
+  = simple_format(@charge.description)
+
+.row
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading Infos zum Tatbestand
+      ul.list-group
+        li.list-group-item Aktualisiert: #{l(@charge.created_at)}
+        / li.list-group-item Bundesland: #{@charge.state}
+        / li.list-group-item Kennzeichen: #{s(@charge.prefix)}
+        / li.list-group-item E-Mail Adresse: #{@charge.display_email}
+
+  / .col-lg-6
+  /   .panel.panel-default
+  /     .panel-heading Statistik
+  /     ul.list-group
+  /       - @charge.statistics.each do |key, value|
+  /         li.list-group-item
+  /           = t(key, scope: 'charges.statistics')
+  /           .badge.pull-right= value

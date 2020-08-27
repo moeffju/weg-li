@@ -5,7 +5,6 @@ class ChargesController < ApplicationController
   end
 
   def show
-    @district = Charge.active.find(params[:id])
+    @charge = Charge.active.find(params[:id])
   end
-
 end
